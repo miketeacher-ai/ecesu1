@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Vocabulary Sheet | A1-A2 English-Turkish</title>
+    <style>
+        :root {
+            --bg: #fefcf8;
+            --card-bg: #ffffff;
+            --text: #2d2218;
+            --text-light: #5c4b3a;
+            --border: #e8ddd0;
+            --best-accent: #e8823b;
+            --best-light: #fff7f0;
+            --worst-accent: #7b8ca8;
+            --worst-light: #f4f7fb;
+            --this-accent: #4a9c7c;
+            --this-light: #edf7f2;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            --radius: 10px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --print-scale: 1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 20px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0.2cm;
+                font-size: 11pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .sheet-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .word-row {
+                break-inside: avoid;
+            }
+            .tab-section {
+                break-inside: avoid;
+            }
+            @page {
+                size: A4;
+                margin: 0.7cm;
+            }
+        }
+
+        .sheet-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 28px 24px 32px;
+            border: 1px solid var(--border);
+        }
+
+        /* Header */
+        .sheet-header {
+            text-align: center;
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 2px dashed #e8ddd0;
+        }
+        .sheet-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3d2c1e;
+            letter-spacing: -0.3px;
+        }
+        .sheet-header .sub {
+            font-size: 0.95rem;
+            color: #8b7355;
+            margin-top: 2px;
+        }
+        .level-badge {
+            display: inline-block;
+            background: #fdf3e7;
+            color: #c25d1e;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 6px;
+            letter-spacing: 0.4px;
+        }
+
+        /* Print button */
+        .print-btn {
+            display: block;
+            margin: 0 auto 20px;
+            background: #3d2c1e;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            letter-spacing: 0.3px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+        }
+        .print-btn:hover {
+            background: #5c402e;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Tab sections */
+        .tab-section {
+            margin-bottom: 26px;
+            border-radius: var(--radius);
+            padding: 16px 18px 14px;
+            border-left: 5px solid transparent;
+            background: #fefefe;
+        }
+        .tab-best {
+            background: var(--best-light);
+            border-left-color: var(--best-accent);
+        }
+        .tab-worst {
+            background: var(--worst-light);
+            border-left-color: var(--worst-accent);
+        }
+        .tab-this {
+            background: var(--this-light);
+            border-left-color: var(--this-accent);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tab-best .section-title {
+            color: #b4571e;
+        }
+        .tab-worst .section-title {
+            color: #4a5f7a;
+        }
+        .tab-this .section-title {
+            color: #2d7053;
+        }
+        .section-emoji {
+            font-size: 1.4rem;
+        }
+
+        /* Word table */
+        .word-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+        .word-table th {
+            text-align: left;
+            padding: 8px 10px;
+            background: rgba(0, 0, 0, 0.03);
+            font-weight: 700;
+            color: #5c4b3a;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            border-bottom: 2px solid #e8ddd0;
+        }
+        .word-table td {
+            padding: 9px 10px;
+            border-bottom: 1px solid #f0e8db;
+            vertical-align: top;
+        }
+        .word-table tr:last-child td {
+            border-bottom: none;
+        }
+        .word-table .eng-word {
+            font-weight: 700;
+            color: #3d2c1e;
+        }
+        .word-table .turkish {
+            color: #2d2218;
+            font-weight: 500;
+        }
+        .word-table .definition {
+            color: #6b5a4e;
+            font-size: 0.85rem;
+        }
+        .tab-best .word-table .eng-word {
+            color: #b4571e;
+        }
+        .tab-worst .word-table .eng-word {
+            color: #4a5f7a;
+        }
+        .tab-this .word-table .eng-word {
+            color: #2d7053;
+        }
+        .q-ref {
+            font-size: 0.72rem;
+            color: #a89680;
+            white-space: nowrap;
+        }
+
+        .total-summary {
+            text-align: center;
+            margin-top: 18px;
+            font-weight: 600;
+            color: #5c4b3a;
+            font-size: 0.9rem;
+            background: #fdf8f2;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .sheet-container {
+                padding: 16px 10px;
+            }
+            .word-table {
+                font-size: 0.78rem;
+            }
+            .word-table th,
+            .word-table td {
+                padding: 6px 6px;
+            }
+            .sheet-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Print Vocabulary Sheet (PDF / Paper)</button>
+
+    <div class="sheet-container">
+        <header class="sheet-header">
+            <h1>📝 Summer Vocabulary Sheet</h1>
+            <p class="sub">A1 – Early A2 Level &bull; English Words with Turkish Meanings</p>
+            <span class="level-badge">45 Questions &bull; 135 Words</span>
+        </header>
+
+        <!-- BEST SUMMER -->
+        <section class="tab-section tab-best">
+            <h2 class="section-title"><span class="section-emoji">🌟</span> Best Summer Vocabulary</h2>
+            <table class="word-table">
+                <thead>
+                    <tr><th>Q</th><th>English Word</th><th>Turkish (Türkçe)</th><th>English Definition</th></tr>
+                </thead>
+                <tbody id="bestVocabBody"></tbody>
+            </table>
+        </section>
+
+        <!-- WORST SUMMER -->
+        <section class="tab-section tab-worst">
+            <h2 class="section-title"><span class="section-emoji">🌧️</span> Worst Summer Vocabulary</h2>
+            <table class="word-table">
+                <thead>
+                    <tr><th>Q</th><th>English Word</th><th>Turkish (Türkçe)</th><th>English Definition</th></tr>
+                </thead>
+                <tbody id="worstVocabBody"></tbody>
+            </table>
+        </section>
+
+        <!-- THIS SUMMER -->
+        <section class="tab-section tab-this">
+            <h2 class="section-title"><span class="section-emoji">🎯</span> This Summer Vocabulary</h2>
+            <table class="word-table">
+                <thead>
+                    <tr><th>Q</th><th>English Word</th><th>Turkish (Türkçe)</th><th>English Definition</th></tr>
+                </thead>
+                <tbody id="thisVocabBody"></tbody>
+            </table>
+        </section>
+
+        <div class="total-summary">
+            ✨ 3 Topics &bull; 15 Questions each &bull; 135 English-Turkish Words
+        </div>
+    </div>
+
+    <script>
+        // ──────────────────────────────────────
+        // VOCABULARY DATA WITH TURKISH MEANINGS
+        // ──────────────────────────────────────
+        const bestVocab = [
+            { q: 1, eng: 'memory', tr: 'anı / hatıra', def: 'something you remember' },
+            { q: 1, eng: 'happy', tr: 'mutlu', def: 'feeling good' },
+            { q: 1, eng: 'holiday', tr: 'tatil', def: 'time off from school or work' },
+            { q: 2, eng: 'travel', tr: 'seyahat etmek', def: 'to go to another place' },
+            { q: 2, eng: 'beach', tr: 'plaj / kumsal', def: 'land near the sea' },
+            { q: 2, eng: 'country', tr: 'ülke', def: 'a nation like Spain or Italy' },
+            { q: 3, eng: 'family', tr: 'aile', def: 'parents, brothers, sisters' },
+            { q: 3, eng: 'friend', tr: 'arkadaş', def: 'a person you like' },
+            { q: 3, eng: 'together', tr: 'birlikte', def: 'with other people' },
+            { q: 4, eng: 'sunny', tr: 'güneşli', def: 'with a lot of sun' },
+            { q: 4, eng: 'warm', tr: 'ılık / sıcak', def: 'a little hot, not cold' },
+            { q: 4, eng: 'bright', tr: 'parlak / aydınlık', def: 'with a lot of light' },
+            { q: 5, eng: 'swim', tr: 'yüzmek', def: 'move your body in water' },
+            { q: 5, eng: 'play', tr: 'oynamak', def: 'have fun with friends' },
+            { q: 5, eng: 'relax', tr: 'dinlenmek', def: 'rest and do nothing' },
+            { q: 6, eng: 'ice cream', tr: 'dondurma', def: 'a cold, sweet food' },
+            { q: 6, eng: 'fruit', tr: 'meyve', def: 'food like apples, oranges' },
+            { q: 6, eng: 'delicious', tr: 'lezzetli', def: 'very good to eat' },
+            { q: 7, eng: 'meet', tr: 'tanışmak', def: 'see someone for the first time' },
+            { q: 7, eng: 'kind', tr: 'nazik / kibar', def: 'nice to other people' },
+            { q: 7, eng: 'talk', tr: 'konuşmak', def: 'speak with someone' },
+            { q: 8, eng: 'favourite', tr: 'en sevilen', def: 'liked the most' },
+            { q: 8, eng: 'moment', tr: 'an', def: 'a short time' },
+            { q: 8, eng: 'special', tr: 'özel', def: 'not like other days' },
+            { q: 9, eng: 'photo', tr: 'fotoğraf', def: 'a picture' },
+            { q: 9, eng: 'camera', tr: 'fotoğraf makinesi', def: 'a thing to take photos' },
+            { q: 9, eng: 'remember', tr: 'hatırlamak', def: 'to not forget' },
+            { q: 10, eng: 'blue', tr: 'mavi', def: 'the colour of sky and sea' },
+            { q: 10, eng: 'yellow', tr: 'sarı', def: 'the colour of the sun' },
+            { q: 10, eng: 'bright', tr: 'parlak', def: 'full of light' },
+            { q: 11, eng: 'sad', tr: 'üzgün', def: 'not happy' },
+            { q: 11, eng: 'wish', tr: 'dilemek / istemek', def: 'to want something very much' },
+            { q: 11, eng: 'again', tr: 'tekrar / yeniden', def: 'one more time' },
+            { q: 12, eng: 'souvenir', tr: 'hediyelik eşya', def: 'a thing from a trip' },
+            { q: 12, eng: 'gift', tr: 'hediye', def: 'a present for someone' },
+            { q: 12, eng: 'shop', tr: 'dükkan / mağaza', def: 'a place to buy things' },
+            { q: 13, eng: 'song', tr: 'şarkı', def: 'music with words' },
+            { q: 13, eng: 'dance', tr: 'dans etmek', def: 'move your body to music' },
+            { q: 13, eng: 'fun', tr: 'eğlenceli', def: 'enjoyable and nice' },
+            { q: 14, eng: 'return', tr: 'geri dönmek', def: 'to go back' },
+            { q: 14, eng: 'someday', tr: 'bir gün', def: 'at some time in the future' },
+            { q: 14, eng: 'plan', tr: 'plan', def: 'make a decision for later' },
+            { q: 15, eng: 'thank', tr: 'teşekkür etmek', def: 'say you are happy for something' },
+            { q: 15, eng: 'kind', tr: 'nazik', def: 'nice and good to others' },
+            { q: 15, eng: 'wonderful', tr: 'harika', def: 'very, very good' }
+        ];
+
+        const worstVocab = [
+            { q: 1, eng: 'terrible', tr: 'berbat / korkunç', def: 'very bad' },
+            { q: 1, eng: 'unhappy', tr: 'mutsuz', def: 'not happy' },
+            { q: 1, eng: 'disaster', tr: 'felaket', def: 'a very bad event' },
+            { q: 2, eng: 'problem', tr: 'sorun / problem', def: 'something bad that happens' },
+            { q: 2, eng: 'mistake', tr: 'hata', def: 'something done wrong' },
+            { q: 2, eng: 'upset', tr: 'üzgün / sinirli', def: 'sad or angry' },
+            { q: 3, eng: 'rainy', tr: 'yağmurlu', def: 'with a lot of rain' },
+            { q: 3, eng: 'cold', tr: 'soğuk', def: 'not warm' },
+            { q: 3, eng: 'cloudy', tr: 'bulutlu', def: 'with many clouds in the sky' },
+            { q: 4, eng: 'ill', tr: 'hasta', def: 'not well, sick' },
+            { q: 4, eng: 'headache', tr: 'baş ağrısı', def: 'pain in the head' },
+            { q: 4, eng: 'medicine', tr: 'ilaç', def: 'something to help when sick' },
+            { q: 5, eng: 'lose', tr: 'kaybetmek', def: 'to not find something' },
+            { q: 5, eng: 'wallet', tr: 'cüzdan', def: 'a small thing for money' },
+            { q: 5, eng: 'important', tr: 'önemli', def: 'very needed' },
+            { q: 6, eng: 'argue', tr: 'tartışmak', def: 'talk in an angry way' },
+            { q: 6, eng: 'angry', tr: 'kızgın / sinirli', def: 'feeling mad' },
+            { q: 6, eng: 'sorry', tr: 'üzgün (pişman)', def: 'feeling sad for something' },
+            { q: 7, eng: 'accident', tr: 'kaza', def: 'something bad that happens' },
+            { q: 7, eng: 'hurt', tr: 'incinmek / acımak', def: 'to feel pain' },
+            { q: 7, eng: 'careful', tr: 'dikkatli', def: 'paying attention' },
+            { q: 8, eng: 'bored', tr: 'sıkılmış', def: 'not interested' },
+            { q: 8, eng: 'nothing', tr: 'hiçbir şey', def: 'not anything' },
+            { q: 8, eng: 'long', tr: 'uzun', def: 'feeling like a lot of time' },
+            { q: 9, eng: 'lonely', tr: 'yalnız (hissi)', def: 'sad because no one is there' },
+            { q: 9, eng: 'alone', tr: 'yalnız / tek başına', def: 'with no other people' },
+            { q: 9, eng: 'miss', tr: 'özlemek', def: 'want to see someone' },
+            { q: 10, eng: 'break', tr: 'kırmak / bozmak', def: 'make something not work' },
+            { q: 10, eng: 'phone', tr: 'telefon', def: 'a mobile device' },
+            { q: 10, eng: 'fix', tr: 'tamir etmek', def: 'make it work again' },
+            { q: 11, eng: 'terrible', tr: 'berbat', def: 'very bad taste' },
+            { q: 11, eng: 'stomach', tr: 'mide', def: 'part of the body for food' },
+            { q: 11, eng: 'sick', tr: 'hasta / midesi bulanan', def: 'feel bad in the body' },
+            { q: 12, eng: 'cry', tr: 'ağlamak', def: 'water from eyes when sad' },
+            { q: 12, eng: 'upset', tr: 'çok üzgün', def: 'very sad' },
+            { q: 12, eng: 'comfort', tr: 'teselli etmek', def: 'make someone feel better' },
+            { q: 13, eng: 'homesick', tr: 'ev özlemi çeken', def: 'missing home' },
+            { q: 13, eng: 'leave', tr: 'ayrılmak / terk etmek', def: 'go away from a place' },
+            { q: 13, eng: 'early', tr: 'erken', def: 'before the right time' },
+            { q: 14, eng: 'lesson', tr: 'ders', def: 'something you learn' },
+            { q: 14, eng: 'careful', tr: 'dikkatli', def: 'more attention next time' },
+            { q: 14, eng: 'better', tr: 'daha iyi', def: 'more good' },
+            { q: 15, eng: 'laugh', tr: 'gülmek', def: 'make a happy sound' },
+            { q: 15, eng: 'funny', tr: 'komik', def: 'makes you laugh' },
+            { q: 15, eng: 'story', tr: 'hikaye', def: 'something you tell others' }
+        ];
+
+        const thisVocab = [
+            { q: 1, eng: 'plan', tr: 'plan', def: 'something you want to do' },
+            { q: 1, eng: 'hope', tr: 'ummak / ümit etmek', def: 'want something to happen' },
+            { q: 1, eng: 'maybe', tr: 'belki', def: 'perhaps, not sure' },
+            { q: 2, eng: 'dream', tr: 'hayal / rüya', def: 'something you really want' },
+            { q: 2, eng: 'explore', tr: 'keşfetmek', def: 'see and find new places' },
+            { q: 2, eng: 'adventure', tr: 'macera', def: 'an exciting trip' },
+            { q: 3, eng: 'visit', tr: 'ziyaret etmek', def: 'go to see someone' },
+            { q: 3, eng: 'relative', tr: 'akraba', def: 'family like aunt or uncle' },
+            { q: 3, eng: 'together', tr: 'birlikte', def: 'with someone' },
+            { q: 4, eng: 'skill', tr: 'beceri / yetenek', def: 'something you can do' },
+            { q: 4, eng: 'hobby', tr: 'hobi', def: 'something you like doing' },
+            { q: 4, eng: 'practice', tr: 'pratik yapmak', def: 'do something many times' },
+            { q: 5, eng: 'sport', tr: 'spor', def: 'game like football or tennis' },
+            { q: 5, eng: 'try', tr: 'denemek', def: 'do something new' },
+            { q: 5, eng: 'outdoor', tr: 'açık hava', def: 'outside the house' },
+            { q: 6, eng: 'book', tr: 'kitap', def: 'a story on paper' },
+            { q: 6, eng: 'story', tr: 'hikaye', def: 'a tale' },
+            { q: 6, eng: 'quiet', tr: 'sessiz', def: 'with no noise' },
+            { q: 7, eng: 'sand', tr: 'kum', def: 'small pieces of rock at beach' },
+            { q: 7, eng: 'wave', tr: 'dalga', def: 'water moving in the sea' },
+            { q: 7, eng: 'shell', tr: 'deniz kabuğu', def: 'a hard thing from the sea' },
+            { q: 8, eng: 'picnic', tr: 'piknik', def: 'eating food outside' },
+            { q: 8, eng: 'park', tr: 'park', def: 'a green place in a city' },
+            { q: 8, eng: 'basket', tr: 'sepet', def: 'a thing to carry food' },
+            { q: 9, eng: 'tent', tr: 'çadır', def: 'a house made of cloth' },
+            { q: 9, eng: 'campfire', tr: 'kamp ateşi', def: 'a fire outside at night' },
+            { q: 9, eng: 'star', tr: 'yıldız', def: 'a light in the night sky' },
+            { q: 10, eng: 'watermelon', tr: 'karpuz', def: 'a big green and red fruit' },
+            { q: 10, eng: 'barbecue', tr: 'mangal / barbekü', def: 'cooking food outside' },
+            { q: 10, eng: 'fresh', tr: 'taze', def: 'new and good' },
+            { q: 11, eng: 'study', tr: 'ders çalışmak', def: 'learn something' },
+            { q: 11, eng: 'course', tr: 'kurs', def: 'a class or lessons' },
+            { q: 11, eng: 'improve', tr: 'geliştirmek', def: 'get better at something' },
+            { q: 12, eng: 'invite', tr: 'davet etmek', def: 'ask someone to come' },
+            { q: 12, eng: 'party', tr: 'parti', def: 'a fun time with people' },
+            { q: 12, eng: 'game', tr: 'oyun', def: 'something fun to play' },
+            { q: 13, eng: 'save', tr: 'biriktirmek / tasarruf', def: 'keep money for later' },
+            { q: 13, eng: 'buy', tr: 'satın almak', def: 'get something with money' },
+            { q: 13, eng: 'need', tr: 'ihtiyaç', def: 'something you must have' },
+            { q: 14, eng: 'fan', tr: 'vantilatör', def: 'a thing that moves air' },
+            { q: 14, eng: 'shade', tr: 'gölge', def: 'a place without sun' },
+            { q: 14, eng: 'drink', tr: 'içmek', def: 'take water or juice' },
+            { q: 15, eng: 'excited', tr: 'heyecanlı', def: 'very happy about something coming' },
+            { q: 15, eng: 'count', tr: 'saymak', def: 'say numbers to know days left' },
+            { q: 15, eng: 'soon', tr: 'yakında', def: 'in a short time' }
+        ];
+
+        // ──────────────────────────────────────
+        // RENDER FUNCTION
+        // ──────────────────────────────────────
+        function renderTableBody(tbodyId, vocabArray) {
+            const tbody = document.getElementById(tbodyId);
+            if (!tbody) return;
+            let html = '';
+            vocabArray.forEach(item => {
+                html += `
+                <tr class="word-row">
+                  <td class="q-ref">${item.q}</td>
+                  <td class="eng-word">${item.eng}</td>
+                  <td class="turkish">${item.tr}</td>
+                  <td class="definition">${item.def}</td>
+                </tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // Render all sections
+        renderTableBody('bestVocabBody', bestVocab);
+        renderTableBody('worstVocabBody', worstVocab);
+        renderTableBody('thisVocabBody', thisVocab);
+    </script>
+</body>
+</html>
