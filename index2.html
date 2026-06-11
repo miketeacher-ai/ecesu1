@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Speaking Questions | A1-A2 English</title>
+    <style>
+        :root {
+            --bg: #fff9f0;
+            --card-bg: #ffffff;
+            --text: #3d2c1e;
+            --text-light: #6b5a4e;
+            --accent-best: #e8823b;
+            --accent-best-light: #fff3e8;
+            --accent-worst: #7b8ca8;
+            --accent-worst-light: #f0f3f7;
+            --accent-this: #4a9c7c;
+            --accent-this-light: #edf7f2;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.10);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(160deg, #fff7ed 0%, #fef9f3 30%, #fdf6f0 60%, #fefcf8 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -180px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 183, 77, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -200px;
+            left: -140px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(74, 156, 124, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 20px 18px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 28px 20px 10px;
+        }
+        .header .icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 6px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3d2c1e;
+            letter-spacing: -0.3px;
+        }
+        .header .subtitle {
+            font-size: 0.95rem;
+            color: #8b7355;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 18px 0 24px;
+            position: sticky;
+            top: 14px;
+            z-index: 10;
+            background: rgba(255, 249, 240, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 10px 14px;
+            border-radius: 40px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tab-btn {
+            padding: 11px 22px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            transition: var(--transition);
+            background: transparent;
+            color: #6b5a4e;
+            white-space: nowrap;
+            position: relative;
+        }
+        .tab-btn:hover {
+            background: rgba(0, 0, 0, 0.04);
+            color: #3d2c1e;
+        }
+        .tab-btn.active {
+            color: #fff;
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
+            transform: translateY(-1px);
+        }
+        .tab-btn.active.tab-best {
+            background: var(--accent-best);
+        }
+        .tab-btn.active.tab-worst {
+            background: var(--accent-worst);
+        }
+        .tab-btn.active.tab-this {
+            background: var(--accent-this);
+        }
+        .tab-emoji {
+            margin-right: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Question count badge */
+        .count-badge {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.06);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #8b7355;
+            margin-left: 4px;
+            transition: var(--transition);
+        }
+        .tab-btn.active .count-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        /* Content area */
+        .content-area {
+            animation: fadeSlideIn 0.35s ease;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .question-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            border-color: #f0e8db;
+        }
+        .question-card .q-number {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b8a088;
+            margin-bottom: 4px;
+        }
+        .question-card .q-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3d2c1e;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+        .question-card .q-text .q-mark {
+            color: #e8823b;
+            font-weight: 700;
+            margin-right: 2px;
+        }
+        .vocab-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .vocab-tag {
+            background: #fdf8f2;
+            border-radius: 22px;
+            padding: 7px 14px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+            border: 1px solid #f3e9db;
+            white-space: nowrap;
+        }
+        .vocab-tag:hover {
+            background: #fff7ed;
+            border-color: #e8cfaa;
+            transform: scale(1.03);
+        }
+        .vocab-tag .word {
+            font-weight: 700;
+            color: #c26a2a;
+            font-size: 0.88rem;
+        }
+        .vocab-tag .def {
+            color: #6b5a4e;
+            font-size: 0.8rem;
+        }
+        .vocab-tag .sep {
+            color: #d4c4ad;
+            font-weight: 300;
+        }
+
+        /* Accent variations per tab */
+        .tab-best .question-card .q-text .q-mark {
+            color: #e8823b;
+        }
+        .tab-best .vocab-tag {
+            background: #fff8f1;
+            border-color: #f5e2ce;
+        }
+        .tab-best .vocab-tag .word {
+            color: #c25d1e;
+        }
+        .tab-best .vocab-tag:hover {
+            background: #fff3e5;
+            border-color: #e8c89a;
+        }
+
+        .tab-worst .question-card .q-text .q-mark {
+            color: #7b8ca8;
+        }
+        .tab-worst .vocab-tag {
+            background: #f4f6f9;
+            border-color: #dce2eb;
+        }
+        .tab-worst .vocab-tag .word {
+            color: #4a5f7a;
+        }
+        .tab-worst .vocab-tag:hover {
+            background: #eef1f6;
+            border-color: #c5cfdd;
+        }
+
+        .tab-this .question-card .q-text .q-mark {
+            color: #4a9c7c;
+        }
+        .tab-this .vocab-tag {
+            background: #f2f9f5;
+            border-color: #cde5d8;
+        }
+        .tab-this .vocab-tag .word {
+            color: #2d7053;
+        }
+        .tab-this .vocab-tag:hover {
+            background: #e8f5ed;
+            border-color: #a8d5bd;
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.82rem;
+            color: #b8a088;
+            letter-spacing: 0.3px;
+        }
+        .footer-note span {
+            color: #e8823b;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .header .icon {
+                font-size: 36px;
+            }
+            .tab-nav {
+                gap: 4px;
+                padding: 8px 8px;
+                border-radius: 32px;
+            }
+            .tab-btn {
+                padding: 9px 14px;
+                font-size: 0.82rem;
+            }
+            .tab-emoji {
+                margin-right: 2px;
+                font-size: 0.95rem;
+            }
+            .count-badge {
+                font-size: 0.7rem;
+                padding: 2px 7px;
+            }
+            .question-card {
+                padding: 15px 14px;
+                border-radius: var(--radius-sm);
+            }
+            .question-card .q-text {
+                font-size: 1rem;
+            }
+            .vocab-tag {
+                font-size: 0.78rem;
+                padding: 5px 10px;
+                border-radius: 18px;
+            }
+            .vocab-tag .word {
+                font-size: 0.8rem;
+            }
+            .vocab-tag .def {
+                font-size: 0.73rem;
+            }
+        }
+        @media (max-width: 380px) {
+            .tab-btn {
+                padding: 8px 10px;
+                font-size: 0.74rem;
+            }
+            .tab-emoji {
+                font-size: 0.85rem;
+            }
+            .vocab-row {
+                gap: 6px;
+            }
+            .vocab-tag {
+                font-size: 0.72rem;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <span class="icon">☀️</span>
+            <h1>Summer Speaking Questions</h1>
+            <p class="subtitle">Practice your English &bull; A1 – Early A2 Level</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-nav" id="tabNav" aria-label="Question tabs">
+            <button class="tab-btn active tab-best" data-tab="best" aria-selected="true">
+                <span class="tab-emoji">🌟</span> Best Summer<span class="count-badge">15</span>
+            </button>
+            <button class="tab-btn tab-worst" data-tab="worst" aria-selected="false">
+                <span class="tab-emoji">🌧️</span> Worst Summer<span class="count-badge">15</span>
+            </button>
+            <button class="tab-btn tab-this" data-tab="this" aria-selected="false">
+                <span class="tab-emoji">🎯</span> This Summer<span class="count-badge">15</span>
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="content-area tab-best" id="contentArea" aria-live="polite">
+            <!-- Dynamically rendered -->
+        </main>
+
+        <p class="footer-note">✨ <span>45 questions</span> &bull; <span>135 new words</span> &bull; Read, speak, and learn!</p>
+    </div>
+
+    <script>
+        // ──────────────────────────────────────
+        // DATA: All questions and vocabulary
+        // ──────────────────────────────────────
+        const tabData = {
+            best: {
+                label: 'Best Summer',
+                emoji: '🌟',
+                cssClass: 'tab-best',
+                questions: [{
+                    id: 1,
+                    q: 'What was your best summer?',
+                    vocab: [
+                        { word: 'memory', def: 'something you remember' },
+                        { word: 'happy', def: 'feeling good' },
+                        { word: 'holiday', def: 'time off from school or work' }
+                    ]
+                }, {
+                    id: 2,
+                    q: 'Where did you go?',
+                    vocab: [
+                        { word: 'travel', def: 'to go to another place' },
+                        { word: 'beach', def: 'land near the sea' },
+                        { word: 'country', def: 'a nation like Spain or Italy' }
+                    ]
+                }, {
+                    id: 3,
+                    q: 'Who did you go with?',
+                    vocab: [
+                        { word: 'family', def: 'parents, brothers, sisters' },
+                        { word: 'friend', def: 'a person you like' },
+                        { word: 'together', def: 'with other people' }
+                    ]
+                }, {
+                    id: 4,
+                    q: 'What was the weather like?',
+                    vocab: [
+                        { word: 'sunny', def: 'with a lot of sun' },
+                        { word: 'warm', def: 'a little hot, not cold' },
+                        { word: 'bright', def: 'with a lot of light' }
+                    ]
+                }, {
+                    id: 5,
+                    q: 'What did you do every day?',
+                    vocab: [
+                        { word: 'swim', def: 'move your body in water' },
+                        { word: 'play', def: 'have fun with friends' },
+                        { word: 'relax', def: 'rest and do nothing' }
+                    ]
+                }, {
+                    id: 6,
+                    q: 'What food did you eat?',
+                    vocab: [
+                        { word: 'ice cream', def: 'a cold, sweet food' },
+                        { word: 'fruit', def: 'food like apples, oranges' },
+                        { word: 'delicious', def: 'very good to eat' }
+                    ]
+                }, {
+                    id: 7,
+                    q: 'Did you make new friends?',
+                    vocab: [
+                        { word: 'meet', def: 'see someone for the first time' },
+                        { word: 'kind', def: 'nice to other people' },
+                        { word: 'talk', def: 'speak with someone' }
+                    ]
+                }, {
+                    id: 8,
+                    q: 'What was your favourite moment?',
+                    vocab: [
+                        { word: 'favourite', def: 'liked the most' },
+                        { word: 'moment', def: 'a short time' },
+                        { word: 'special', def: 'not like other days' }
+                    ]
+                }, {
+                    id: 9,
+                    q: 'Did you take any photos?',
+                    vocab: [
+                        { word: 'photo', def: 'a picture' },
+                        { word: 'camera', def: 'a thing to take photos' },
+                        { word: 'remember', def: 'to not forget' }
+                    ]
+                }, {
+                    id: 10,
+                    q: 'What colour do you think of?',
+                    vocab: [
+                        { word: 'blue', def: 'the colour of sky and sea' },
+                        { word: 'yellow', def: 'the colour of the sun' },
+                        { word: 'bright', def: 'full of light' }
+                    ]
+                }, {
+                    id: 11,
+                    q: 'How did you feel at the end?',
+                    vocab: [
+                        { word: 'sad', def: 'not happy' },
+                        { word: 'wish', def: 'to want something very much' },
+                        { word: 'again', def: 'one more time' }
+                    ]
+                }, {
+                    id: 12,
+                    q: 'Did you buy any presents?',
+                    vocab: [
+                        { word: 'souvenir', def: 'a thing from a trip' },
+                        { word: 'gift', def: 'a present for someone' },
+                        { word: 'shop', def: 'a place to buy things' }
+                    ]
+                }, {
+                    id: 13,
+                    q: 'What music did you listen to?',
+                    vocab: [
+                        { word: 'song', def: 'music with words' },
+                        { word: 'dance', def: 'move your body to music' },
+                        { word: 'fun', def: 'enjoyable and nice' }
+                    ]
+                }, {
+                    id: 14,
+                    q: 'Would you like to go again?',
+                    vocab: [
+                        { word: 'return', def: 'to go back' },
+                        { word: 'someday', def: 'at some time in the future' },
+                        { word: 'plan', def: 'make a decision for later' }
+                    ]
+                }, {
+                    id: 15,
+                    q: 'Who would you like to thank?',
+                    vocab: [
+                        { word: 'thank', def: 'say you are happy for something' },
+                        { word: 'kind', def: 'nice and good to others' },
+                        { word: 'wonderful', def: 'very, very good' }
+                    ]
+                }]
+            },
+            worst: {
+                label: 'Worst Summer',
+                emoji: '🌧️',
+                cssClass: 'tab-worst',
+                questions: [{
+                    id: 1,
+                    q: 'What was your worst summer?',
+                    vocab: [
+                        { word: 'terrible', def: 'very bad' },
+                        { word: 'unhappy', def: 'not happy' },
+                        { word: 'disaster', def: 'a very bad event' }
+                    ]
+                }, {
+                    id: 2,
+                    q: 'What went wrong?',
+                    vocab: [
+                        { word: 'problem', def: 'something bad that happens' },
+                        { word: 'mistake', def: 'something done wrong' },
+                        { word: 'upset', def: 'sad or angry' }
+                    ]
+                }, {
+                    id: 3,
+                    q: 'Was the weather bad?',
+                    vocab: [
+                        { word: 'rainy', def: 'with a lot of rain' },
+                        { word: 'cold', def: 'not warm' },
+                        { word: 'cloudy', def: 'with many clouds in the sky' }
+                    ]
+                }, {
+                    id: 4,
+                    q: 'Did you get sick?',
+                    vocab: [
+                        { word: 'ill', def: 'not well, sick' },
+                        { word: 'headache', def: 'pain in the head' },
+                        { word: 'medicine', def: 'something to help when sick' }
+                    ]
+                }, {
+                    id: 5,
+                    q: 'Did you lose something?',
+                    vocab: [
+                        { word: 'lose', def: 'to not find something' },
+                        { word: 'wallet', def: 'a small thing for money' },
+                        { word: 'important', def: 'very needed' }
+                    ]
+                }, {
+                    id: 6,
+                    q: 'Did you argue with anyone?',
+                    vocab: [
+                        { word: 'argue', def: 'talk in an angry way' },
+                        { word: 'angry', def: 'feeling mad' },
+                        { word: 'sorry', def: 'feeling sad for something' }
+                    ]
+                }, {
+                    id: 7,
+                    q: 'Was there an accident?',
+                    vocab: [
+                        { word: 'accident', def: 'something bad that happens' },
+                        { word: 'hurt', def: 'to feel pain' },
+                        { word: 'careful', def: 'paying attention' }
+                    ]
+                }, {
+                    id: 8,
+                    q: 'Did you feel bored?',
+                    vocab: [
+                        { word: 'bored', def: 'not interested' },
+                        { word: 'nothing', def: 'not anything' },
+                        { word: 'long', def: 'feeling like a lot of time' }
+                    ]
+                }, {
+                    id: 9,
+                    q: 'Were you alone?',
+                    vocab: [
+                        { word: 'lonely', def: 'sad because no one is there' },
+                        { word: 'alone', def: 'with no other people' },
+                        { word: 'miss', def: 'want to see someone' }
+                    ]
+                }, {
+                    id: 10,
+                    q: 'Did something break?',
+                    vocab: [
+                        { word: 'break', def: 'make something not work' },
+                        { word: 'phone', def: 'a mobile device' },
+                        { word: 'fix', def: 'make it work again' }
+                    ]
+                }, {
+                    id: 11,
+                    q: 'Was the food bad?',
+                    vocab: [
+                        { word: 'terrible', def: 'very bad taste' },
+                        { word: 'stomach', def: 'part of the body for food' },
+                        { word: 'sick', def: 'feel bad in the body' }
+                    ]
+                }, {
+                    id: 12,
+                    q: 'Did you cry?',
+                    vocab: [
+                        { word: 'cry', def: 'water from eyes when sad' },
+                        { word: 'upset', def: 'very sad' },
+                        { word: 'comfort', def: 'make someone feel better' }
+                    ]
+                }, {
+                    id: 13,
+                    q: 'Did you want to go home?',
+                    vocab: [
+                        { word: 'homesick', def: 'missing home' },
+                        { word: 'leave', def: 'go away from a place' },
+                        { word: 'early', def: 'before the right time' }
+                    ]
+                }, {
+                    id: 14,
+                    q: 'What did you learn?',
+                    vocab: [
+                        { word: 'lesson', def: 'something you learn' },
+                        { word: 'careful', def: 'more attention next time' },
+                        { word: 'better', def: 'more good' }
+                    ]
+                }, {
+                    id: 15,
+                    q: 'Is it funny now?',
+                    vocab: [
+                        { word: 'laugh', def: 'make a happy sound' },
+                        { word: 'funny', def: 'makes you laugh' },
+                        { word: 'story', def: 'something you tell others' }
+                    ]
+                }]
+            },
+            this: {
+                label: 'This Summer',
+                emoji: '🎯',
+                cssClass: 'tab-this',
+                questions: [{
+                    id: 1,
+                    q: 'What are your plans for this summer?',
+                    vocab: [
+                        { word: 'plan', def: 'something you want to do' },
+                        { word: 'hope', def: 'want something to happen' },
+                        { word: 'maybe', def: 'perhaps, not sure' }
+                    ]
+                }, {
+                    id: 2,
+                    q: 'Where do you want to go?',
+                    vocab: [
+                        { word: 'dream', def: 'something you really want' },
+                        { word: 'explore', def: 'see and find new places' },
+                        { word: 'adventure', def: 'an exciting trip' }
+                    ]
+                }, {
+                    id: 3,
+                    q: 'Who will you spend time with?',
+                    vocab: [
+                        { word: 'visit', def: 'go to see someone' },
+                        { word: 'relative', def: 'family like aunt or uncle' },
+                        { word: 'together', def: 'with someone' }
+                    ]
+                }, {
+                    id: 4,
+                    q: 'What do you want to learn?',
+                    vocab: [
+                        { word: 'skill', def: 'something you can do' },
+                        { word: 'hobby', def: 'something you like doing' },
+                        { word: 'practice', def: 'do something many times' }
+                    ]
+                }, {
+                    id: 5,
+                    q: 'Do you want to try a new sport?',
+                    vocab: [
+                        { word: 'sport', def: 'game like football or tennis' },
+                        { word: 'try', def: 'do something new' },
+                        { word: 'outdoor', def: 'outside the house' }
+                    ]
+                }, {
+                    id: 6,
+                    q: 'What books will you read?',
+                    vocab: [
+                        { word: 'book', def: 'a story on paper' },
+                        { word: 'story', def: 'a tale' },
+                        { word: 'quiet', def: 'with no noise' }
+                    ]
+                }, {
+                    id: 7,
+                    q: 'Will you go to the beach?',
+                    vocab: [
+                        { word: 'sand', def: 'small pieces of rock at beach' },
+                        { word: 'wave', def: 'water moving in the sea' },
+                        { word: 'shell', def: 'a hard thing from the sea' }
+                    ]
+                }, {
+                    id: 8,
+                    q: 'Will you have a picnic?',
+                    vocab: [
+                        { word: 'picnic', def: 'eating food outside' },
+                        { word: 'park', def: 'a green place in a city' },
+                        { word: 'basket', def: 'a thing to carry food' }
+                    ]
+                }, {
+                    id: 9,
+                    q: 'Do you want to go camping?',
+                    vocab: [
+                        { word: 'tent', def: 'a house made of cloth' },
+                        { word: 'campfire', def: 'a fire outside at night' },
+                        { word: 'star', def: 'a light in the night sky' }
+                    ]
+                }, {
+                    id: 10,
+                    q: 'What food do you want to eat?',
+                    vocab: [
+                        { word: 'watermelon', def: 'a big green and red fruit' },
+                        { word: 'barbecue', def: 'cooking food outside' },
+                        { word: 'fresh', def: 'new and good' }
+                    ]
+                }, {
+                    id: 11,
+                    q: 'Will you study anything?',
+                    vocab: [
+                        { word: 'study', def: 'learn something' },
+                        { word: 'course', def: 'a class or lessons' },
+                        { word: 'improve', def: 'get better at something' }
+                    ]
+                }, {
+                    id: 12,
+                    q: 'Will you see your friends?',
+                    vocab: [
+                        { word: 'invite', def: 'ask someone to come' },
+                        { word: 'party', def: 'a fun time with people' },
+                        { word: 'game', def: 'something fun to play' }
+                    ]
+                }, {
+                    id: 13,
+                    q: 'What do you want to buy?',
+                    vocab: [
+                        { word: 'save', def: 'keep money for later' },
+                        { word: 'buy', def: 'get something with money' },
+                        { word: 'need', def: 'something you must have' }
+                    ]
+                }, {
+                    id: 14,
+                    q: 'How will you stay cool?',
+                    vocab: [
+                        { word: 'fan', def: 'a thing that moves air' },
+                        { word: 'shade', def: 'a place without sun' },
+                        { word: 'drink', def: 'take water or juice' }
+                    ]
+                }, {
+                    id: 15,
+                    q: 'What makes you excited?',
+                    vocab: [
+                        { word: 'excited', def: 'very happy about something coming' },
+                        { word: 'count', def: 'say numbers to know days left' },
+                        { word: 'soon', def: 'in a short time' }
+                    ]
+                }]
+            }
+        };
+
+        // ──────────────────────────────────────
+        // RENDER FUNCTION
+        // ──────────────────────────────────────
+        function renderQuestions(tabKey) {
+            const contentArea = document.getElementById('contentArea');
+            const data = tabData[tabKey];
+
+            // Update CSS class on content area
+            contentArea.className = 'content-area ' + data.cssClass;
+
+            let html = '';
+            data.questions.forEach((item) => {
+                html += `
+                <article class="question-card">
+                  <span class="q-number">Question ${item.id}</span>
+                  <p class="q-text"><span class="q-mark">💬</span> ${item.q}</p>
+                  <div class="vocab-row">
+                    ${item.vocab.map(v => `
+                      <span class="vocab-tag">
+                        <span class="word">${v.word}</span>
+                        <span class="sep">—</span>
+                        <span class="def">${v.def}</span>
+                      </span>
+                    `).join('')}
+                  </div>
+                </article>`;
+            });
+
+            contentArea.innerHTML = html;
+            // Re-trigger animation
+            contentArea.style.animation = 'none';
+            contentArea.offsetHeight; // trigger reflow
+            contentArea.style.animation = 'fadeSlideIn 0.35s ease';
+        }
+
+        // ──────────────────────────────────────
+        // TAB SWITCHING LOGIC
+        // ──────────────────────────────────────
+        function switchTab(tabKey) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            const activeBtn = document.querySelector(`[data-tab="${tabKey}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.setAttribute('aria-selected', 'true');
+            }
+            // Render content
+            renderQuestions(tabKey);
+        }
+
+        // ──────────────────────────────────────
+        // EVENT LISTENERS
+        // ──────────────────────────────────────
+        document.getElementById('tabNav').addEventListener('click', function(e) {
+            const btn = e.target.closest('.tab-btn');
+            if (!btn) return;
+            const tabKey = btn.getAttribute('data-tab');
+            if (tabKey && tabData[tabKey]) {
+                switchTab(tabKey);
+                // Smooth scroll to top of content on mobile
+                if (window.innerWidth < 600) {
+                    document.getElementById('contentArea').scrollIntoView({ behavior: 'smooth',
+                        block: 'start' });
+                }
+            }
+        });
+
+        // Keyboard navigation for tabs
+        document.getElementById('tabNav').addEventListener('keydown', function(e) {
+            const current = document.activeElement;
+            if (!current.classList.contains('tab-btn')) return;
+            const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+            const idx = tabs.indexOf(current);
+            if (e.key === 'ArrowRight' && idx < tabs.length - 1) {
+                e.preventDefault();
+                tabs[idx + 1].focus();
+                switchTab(tabs[idx + 1].getAttribute('data-tab'));
+            } else if (e.key === 'ArrowLeft' && idx > 0) {
+                e.preventDefault();
+                tabs[idx - 1].focus();
+                switchTab(tabs[idx - 1].getAttribute('data-tab'));
+            }
+        });
+
+        // ──────────────────────────────────────
+        // INITIAL RENDER
+        // ──────────────────────────────────────
+        renderQuestions('best');
+    </script>
+</body>
+</html>
